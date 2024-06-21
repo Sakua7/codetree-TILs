@@ -15,6 +15,7 @@ public class Main {
             String color = scanString(br.readLine());
             if (hm.get(color) == null) {
                 hm.put(color, 1);
+                if (max == 0) max = 1;
             } else {
                 int v = hm.get(color) + 1;
                 if (v > max) {
