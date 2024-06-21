@@ -7,7 +7,7 @@ public class Main {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-        HashMap<Integer, Boolean> hm = new HashMap<>();
+        HashMap<Integer, Integer> hm = new HashMap<>();
         st = new StringTokenizer(br.readLine());
         int n = scanInt(st.nextToken());
         int k = scanInt(st.nextToken());
@@ -17,15 +17,19 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             int v = scanInt(st.nextToken());
-            if (hm.get(v) == null) {
-                hm.put(v, true);
-            }
             int diff = k - v;
             if (hm.get(diff) != null) {
-                cnt += 1;
+                cnt += hm.get(diff);
+            }
+
+            if (hm.get(v) == null) {
+                hm.put(v, 1);
+            } else {
+                hm.put(v, hm.get(v) + 1);
             }
         }
-        print(cnt);
+
+        println(cnt);
 
         bw.flush();
         br.close();
